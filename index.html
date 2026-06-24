@@ -1,16 +1,9 @@
-Njan ee code nalla **colourful** aayittu thiruthiyenndu!
-
-Ippo oro wing-num (English, Urdu, Kannada, Arabic) athintethaya prathyega vibrant rangangal (colors) undu. Ningal aaraenu select cheyyunnathirippu thazheyorulla history panel-um nalla modern gradient look-il color maarum.
-
-Ee puthiya code copy cheythittu upayogikkaam:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibrant Team Program Hub</title>
+    <title>✨ Secure Team Program Hub</title>
     <style>
         * {
             margin: 0;
@@ -71,11 +64,6 @@ Ee puthiya code copy cheythittu upayogikkaam:
             border-radius: 8px;
             font-size: 0.9rem;
             outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .login-inputs input:focus {
-            border-color: #6366f1;
         }
 
         .admin-btn {
@@ -86,12 +74,10 @@ Ee puthiya code copy cheythittu upayogikkaam:
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
         }
 
         .admin-btn.logout {
             background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
         }
 
         .status-text {
@@ -99,7 +85,7 @@ Ee puthiya code copy cheythittu upayogikkaam:
             font-size: 1rem;
         }
 
-        /* Wing Navigation styling with colorful themes */
+        /* Wing Navigation */
         .wing-tabs {
             display: flex;
             gap: 12px;
@@ -116,16 +102,14 @@ Ee puthiya code copy cheythittu upayogikkaam:
             border-radius: 12px;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             font-size: 0.95rem;
         }
 
         .wing-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
 
-        /* Dynamic classes loaded by JS */
         .wing-btn.btn-English.active { background: #3b82f6; color: white; }
         .wing-btn.btn-Urdu.active { background: #ec4899; color: white; }
         .wing-btn.btn-Kannada.active { background: #eab308; color: #1e293b; }
@@ -138,7 +122,7 @@ Ee puthiya code copy cheythittu upayogikkaam:
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             margin-bottom: 30px;
-            border-top: 8px solid #3b82f6; /* default english tint */
+            border-top: 8px solid #3b82f6;
             transition: border-color 0.3s ease;
         }
 
@@ -163,12 +147,6 @@ Ee puthiya code copy cheythittu upayogikkaam:
             width: 100%;
             outline: none;
             background: #f8fafc;
-            transition: all 0.2s;
-        }
-
-        input[type="text"]:focus:not(:disabled) {
-            border-color: #3b82f6;
-            background: white;
         }
 
         input:disabled, .member-card.disabled {
@@ -177,7 +155,7 @@ Ee puthiya code copy cheythittu upayogikkaam:
             opacity: 0.7;
         }
 
-        /* Dynamic Member Cards Grid */
+        /* Members List Grid */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -200,24 +178,20 @@ Ee puthiya code copy cheythittu upayogikkaam:
 
         .member-card:hover:not(.disabled) {
             transform: scale(1.03);
-            border-color: #cbd5e1;
         }
 
-        /* Active color checkboxes based on modern UI styles */
         .member-card input {
             width: 20px;
             height: 20px;
-            cursor: pointer;
         }
 
-        /* Bottom Profile / Report Display Box */
+        /* Bottom Profile Panel */
         .profile-panel {
             background: white;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             border-top: 8px solid #6366f1;
-            background: linear-gradient(to bottom right, #ffffff, #fafafa);
         }
 
         .profile-header {
@@ -236,7 +210,6 @@ Ee puthiya code copy cheythittu upayogikkaam:
             border-radius: 20px;
             font-size: 0.95rem;
             font-weight: 700;
-            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
         }
 
         table {
@@ -244,7 +217,6 @@ Ee puthiya code copy cheythittu upayogikkaam:
             border-collapse: separate;
             border-spacing: 0 8px;
             font-size: 0.95rem;
-            margin-top: 10px;
         }
 
         th {
@@ -253,7 +225,6 @@ Ee puthiya code copy cheythittu upayogikkaam:
             font-weight: 700;
             padding: 12px;
             text-align: left;
-            border-radius: 6px;
         }
 
         td {
@@ -263,21 +234,9 @@ Ee puthiya code copy cheythittu upayogikkaam:
             border-bottom: 1px solid #f1f5f9;
         }
 
-        td:first-child {
-            border-left: 1px solid #f1f5f9;
-            border-radius: 10px 0 0 10px;
-        }
+        td:first-child { border-radius: 10px 0 0 10px; }
+        td:last-child { border-radius: 0 10px 10px 0; }
 
-        td:last-child {
-            border-right: 1px solid #f1f5f9;
-            border-radius: 0 10px 10px 0;
-        }
-
-        tr:hover td {
-            background: #f8fafc;
-        }
-
-        /* Colorful Wing Labels inside Table */
         .wing-tag {
             padding: 4px 10px;
             border-radius: 6px;
@@ -350,7 +309,6 @@ Ee puthiya code copy cheythittu upayogikkaam:
 <script>
     let isAdmin = false;
 
-    // The 8 Core Team Members
     const team = [
         { id: 'm1', name: 'Sahad' },
         { id: 'm2', name: 'Shahim' },
@@ -362,7 +320,6 @@ Ee puthiya code copy cheythittu upayogikkaam:
         { id: 'm8', name: 'Raza Hamza' }
     ];
 
-    // Themes Mapping for dynamic adjustments
     const wingThemes = {
         English: '#3b82f6',
         Urdu: '#ec4899',
@@ -370,7 +327,8 @@ Ee puthiya code copy cheythittu upayogikkaam:
         Arabic: '#10b981'
     };
 
-    const dataStore = {
+    // Load existing data from LocalStorage or initialize new
+    let dataStore = JSON.parse(localStorage.getItem('sahads_team_data')) || {
         English: { name: '', attendees: [] },
         Urdu: { name: '', attendees: [] },
         Kannada: { name: '', attendees: [] },
@@ -437,13 +395,11 @@ Ee puthiya code copy cheythittu upayogikkaam:
     function changeWing(wing) {
         currentWing = wing;
         
-        // Handle Active Class Logic on Tabs
         document.querySelectorAll('.wing-btn').forEach(b => {
             b.classList.remove('active');
             if(b.innerText.includes(wing)) b.classList.add('active');
         });
 
-        // Set matching theme accent border colors dynamically
         const themeColor = wingThemes[wing];
         const titleElement = document.getElementById('wingTitle');
         titleElement.innerText = `${wing} Wing Details`;
@@ -465,6 +421,9 @@ Ee puthiya code copy cheythittu upayogikkaam:
             if (cb && cb.checked) list.push(m.id);
         });
         dataStore[currentWing].attendees = list;
+
+        // Save data to browser memory instantly
+        localStorage.setItem('sahads_team_data', JSON.stringify(dataStore));
 
         if (viewedMemberId) {
             viewMemberReport(viewedMemberId);
@@ -503,11 +462,8 @@ Ee puthiya code copy cheythittu upayogikkaam:
         }
     }
 
-    // Run setup
     renderCheckboxes();
 </script>
 
 </body>
 </html>
-
-```
