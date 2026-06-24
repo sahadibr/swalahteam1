@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Ultimate Team Program Hub</title>
+    <title>✨ Ultimate Team Program Hub - Swalah Team 1</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #1e293b; padding: 40px 20px; min-height: 100vh; }
@@ -48,7 +48,7 @@
 <body>
 
 <div class="container">
-    <h1>✨ Wing Program Dashboard</h1>
+    <h1>✨ Swalah Team 1 Dashboard</h1>
 
     <div class="admin-bar" id="adminBar">
         <div><span class="status-text" id="statusText" style="color: #64748b;">🔒 View Only Mode</span></div>
@@ -109,8 +109,8 @@
 </div>
 
 <script>
-    // Paste your Google Web App URL here
-    const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+    // Paste your NEW Google Web App URL here (Line 178)
+    const SCRIPT_URL = "YOUR_NEW_WEB_APP_URL_HERE";
 
     let isAdmin = false;
     const team = [
@@ -167,7 +167,7 @@
                     name: dataStore[currentWing].name,
                     description: dataStore[currentWing].description,
                     attendees: dataStore[currentWing].attendees
-                })
+                })https://script.google.com/macros/s/AKfycbwypLb6EvfF1n4zj3hO0cWeYUvFGTFx1Oa0A-H4o74qCs9nhXy2PZC6y_9ff_-ETkDs/exec
             });
             alert("Saved permanently to Google Sheet cloud!");
         } catch(e) { alert("Error saving data"); }
@@ -175,7 +175,8 @@
         btn.innerText = "Save to Cloud";
         btn.disabled = false;
         if (viewedMemberId) viewMemberReport(viewedMemberId);
-    }https://script.google.com/macros/s/AKfycby5mAly3r7GL0V6QjOFPaYSb_0zySRBLtEAN7-5wez9FXo1ijAkDFPY29pWpmsb-qWK/exec
+    }
+
     function tryLogin() {
         const u = document.getElementById('usernameInput').value;
         const p = document.getElementById('passwordInput').value;
