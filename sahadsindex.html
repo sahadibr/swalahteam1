@@ -1,0 +1,513 @@
+Njan ee code nalla **colourful** aayittu thiruthiyenndu!
+
+Ippo oro wing-num (English, Urdu, Kannada, Arabic) athintethaya prathyega vibrant rangangal (colors) undu. Ningal aaraenu select cheyyunnathirippu thazheyorulla history panel-um nalla modern gradient look-il color maarum.
+
+Ee puthiya code copy cheythittu upayogikkaam:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant Team Program Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1e293b;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0f172a;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Admin Lock Top Bar */
+        .admin-bar {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-left: 6px solid #64748b;
+            transition: all 0.3s ease;
+        }
+
+        .admin-bar.unlocked {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        .login-inputs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-inputs input {
+            padding: 10px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .login-inputs input:focus {
+            border-color: #6366f1;
+        }
+
+        .admin-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+        }
+
+        .admin-btn.logout {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+        }
+
+        .status-text {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Wing Navigation styling with colorful themes */
+        .wing-tabs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .wing-btn {
+            padding: 14px 28px;
+            font-weight: 700;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+        }
+
+        .wing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Dynamic classes loaded by JS */
+        .wing-btn.btn-English.active { background: #3b82f6; color: white; }
+        .wing-btn.btn-Urdu.active { background: #ec4899; color: white; }
+        .wing-btn.btn-Kannada.active { background: #eab308; color: #1e293b; }
+        .wing-btn.btn-Arabic.active { background: #10b981; color: white; }
+
+        /* Main Workspace Box */
+        .main-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-top: 8px solid #3b82f6; /* default english tint */
+            transition: border-color 0.3s ease;
+        }
+
+        .group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #334155;
+        }
+
+        input[type="text"] {
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus:not(:disabled) {
+            border-color: #3b82f6;
+            background: white;
+        }
+
+        input:disabled, .member-card.disabled {
+            background: #f1f5f9 !important;
+            cursor: not-allowed !important;
+            opacity: 0.7;
+        }
+
+        /* Dynamic Member Cards Grid */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .member-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .member-card:hover:not(.disabled) {
+            transform: scale(1.03);
+            border-color: #cbd5e1;
+        }
+
+        /* Active color checkboxes based on modern UI styles */
+        .member-card input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        /* Bottom Profile / Report Display Box */
+        .profile-panel {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 8px solid #6366f1;
+            background: linear-gradient(to bottom right, #ffffff, #fafafa);
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-badge {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 700;
+            padding: 12px;
+            text-align: left;
+            border-radius: 6px;
+        }
+
+        td {
+            padding: 14px;
+            background: white;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        td:first-child {
+            border-left: 1px solid #f1f5f9;
+            border-radius: 10px 0 0 10px;
+        }
+
+        td:last-child {
+            border-right: 1px solid #f1f5f9;
+            border-radius: 0 10px 10px 0;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        /* Colorful Wing Labels inside Table */
+        .wing-tag {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: white;
+        }
+        .tag-English { background: #3b82f6; }
+        .tag-Urdu { background: #ec4899; }
+        .tag-Kannada { background: #eab308; color: #1e293b; }
+        .tag-Arabic { background: #10b981; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Wing Program Dashboard</h1>
+
+    <div class="admin-bar" id="adminBar">
+        <div>
+            <span class="status-text" id="statusText" style="color: #64748b;">🔒 View Only Mode (Locked)</span>
+        </div>
+        <div class="login-inputs" id="loginForm">
+            <input type="text" id="usernameInput" placeholder="Username">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button class="admin-btn" onclick="tryLogin()">Unlock</button>
+        </div>
+        <button class="admin-btn logout" id="logoutBtn" style="display: none;" onclick="logout()">Lock Admin</button>
+    </div>
+
+    <div class="wing-tabs">
+        <button class="wing-btn btn-English active" onclick="changeWing('English')">English Wing</button>
+        <button class="wing-btn btn-Urdu" onclick="changeWing('Urdu')">Urdu Wing</button>
+        <button class="wing-btn btn-Kannada" onclick="changeWing('Kannada')">Kannada Wing</button>
+        <button class="wing-btn btn-Arabic" onclick="changeWing('Arabic')">Arabic Wing</button>
+    </div>
+
+    <div class="main-box" id="workspaceBox">
+        <h3 id="wingTitle" style="margin-bottom: 15px; color:#3b82f6; font-size: 1.3rem;">English Wing Details</h3>
+        
+        <div class="group">
+            <label>Program Name</label>
+            <input type="text" id="pName" placeholder="Type program name here..." oninput="updateData()" disabled>
+        </div>
+
+        <label>Who Attempted / Attended? (Click card to view records below)</label>
+        <div class="members-grid" id="checkboxArea"></div>
+    </div>
+
+    <div class="profile-panel">
+        <div class="profile-header">
+            <h2 id="selectedMemberName" style="color:#0f172a; font-size: 1.4rem;">Click a member above to see their details</h2>
+            <div id="totalBadge" class="stat-badge" style="display: none;">Total Attended: <span id="statTotal">0</span></div>
+        </div>
+
+        <div id="reportContent" style="display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Wing</th>
+                        <th style="width: 70%;">Program Name</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isAdmin = false;
+
+    // The 8 Core Team Members
+    const team = [
+        { id: 'm1', name: 'Sahad' },
+        { id: 'm2', name: 'Shahim' },
+        { id: 'm3', name: 'Thajuddeen' },
+        { id: 'm4', name: 'Razi' },
+        { id: 'm5', name: 'Apsal' },
+        { id: 'm6', name: 'Azar' },
+        { id: 'm7', name: 'Ansaf' },
+        { id: 'm8', name: 'Raza Hamza' }
+    ];
+
+    // Themes Mapping for dynamic adjustments
+    const wingThemes = {
+        English: '#3b82f6',
+        Urdu: '#ec4899',
+        Kannada: '#eab308',
+        Arabic: '#10b981'
+    };
+
+    const dataStore = {
+        English: { name: '', attendees: [] },
+        Urdu: { name: '', attendees: [] },
+        Kannada: { name: '', attendees: [] },
+        Arabic: { name: '', attendees: [] }
+    };
+
+    let currentWing = 'English';
+    let viewedMemberId = null;
+
+    function tryLogin() {
+        const u = document.getElementById('usernameInput').value;
+        const p = document.getElementById('passwordInput').value;
+
+        if (u === 'sahadibrahim' && p === '734962') {
+            isAdmin = true;
+            document.getElementById('statusText').innerText = "🔓 Admin Mode (Editing Allowed)";
+            document.getElementById('statusText').style.color = "#10b981";
+            document.getElementById('adminBar').classList.add('unlocked');
+            document.getElementById('loginForm').style.display = "none";
+            document.getElementById('logoutBtn').style.display = "block";
+            
+            document.getElementById('pName').disabled = false;
+            renderCheckboxes();
+        } else {
+            alert("Wrong Username or Password!");
+        }
+    }
+
+    function logout() {
+        isAdmin = false;
+        document.getElementById('statusText').innerText = "🔒 View Only Mode (Locked)";
+        document.getElementById('statusText').style.color = "#64748b";
+        document.getElementById('adminBar').classList.remove('unlocked');
+        document.getElementById('loginForm').style.display = "flex";
+        document.getElementById('logoutBtn').style.display = "none";
+        
+        document.getElementById('usernameInput').value = "";
+        document.getElementById('passwordInput').value = "";
+        document.getElementById('pName').disabled = true;
+        renderCheckboxes();
+    }
+
+    function renderCheckboxes() {
+        const area = document.getElementById('checkboxArea');
+        area.innerHTML = '';
+        const currentThemeColor = wingThemes[currentWing];
+
+        team.forEach(m => {
+            const isChecked = dataStore[currentWing].attendees.includes(m.id);
+            const disabledClass = isAdmin ? '' : 'disabled';
+            const disabledAttr = isAdmin ? '' : 'disabled';
+            
+            area.innerHTML += `
+                <div class="member-card ${disabledClass}" onclick="viewMemberReport('${m.id}')">
+                    <input type="checkbox" id="check-${m.id}" ${isChecked ? 'checked' : ''} ${disabledAttr} 
+                           style="accent-color: ${currentThemeColor}"
+                           onclick="event.stopPropagation(); updateData();">
+                    <strong style="flex-grow:1; color: #334155;">${m.name}</strong>
+                </div>
+            `;
+        });
+    }
+
+    function changeWing(wing) {
+        currentWing = wing;
+        
+        // Handle Active Class Logic on Tabs
+        document.querySelectorAll('.wing-btn').forEach(b => {
+            b.classList.remove('active');
+            if(b.innerText.includes(wing)) b.classList.add('active');
+        });
+
+        // Set matching theme accent border colors dynamically
+        const themeColor = wingThemes[wing];
+        const titleElement = document.getElementById('wingTitle');
+        titleElement.innerText = `${wing} Wing Details`;
+        titleElement.style.color = themeColor;
+        document.getElementById('workspaceBox').style.borderColor = themeColor;
+
+        document.getElementById('pName').value = dataStore[wing].name;
+        renderCheckboxes();
+    }
+
+    function updateData() {
+        if (!isAdmin) return;
+        
+        dataStore[currentWing].name = document.getElementById('pName').value;
+        
+        let list = [];
+        team.forEach(m => {
+            const cb = document.getElementById(`check-${m.id}`);
+            if (cb && cb.checked) list.push(m.id);
+        });
+        dataStore[currentWing].attendees = list;
+
+        if (viewedMemberId) {
+            viewMemberReport(viewedMemberId);
+        }
+    }
+
+    function viewMemberReport(memberId) {
+        viewedMemberId = memberId;
+        const target = team.find(m => m.id === memberId);
+        
+        document.getElementById('selectedMemberName').innerText = "👤 " + target.name + "'s Attendance History";
+        document.getElementById('reportContent').style.display = 'block';
+        document.getElementById('totalBadge').style.display = 'block';
+
+        let total = 0;
+        const tbody = document.getElementById('historyTableBody');
+        tbody.innerHTML = '';
+
+        Object.keys(dataStore).forEach(wingName => {
+            const wing = dataStore[wingName];
+            if (wing.attendees.includes(memberId) && wing.name.trim() !== "") {
+                total++;
+                tbody.innerHTML += `
+                    <tr>
+                        <td><span class="wing-tag tag-${wingName}">${wingName} Wing</span></td>
+                        <td style="font-weight: 600; color: #475569;">${wing.name}</td>
+                    </tr>
+                `;
+            }
+        });
+
+        document.getElementById('statTotal').innerText = total;
+
+        if(total === 0) {
+            tbody.innerHTML = `<tr><td colspan="2" style="text-align:center; color:#94a3b8; padding: 25px; background:#fff;">No programs recorded yet for this member.</td></tr>`;
+        }
+    }
+
+    // Run setup
+    renderCheckboxes();
+</script>
+
+</body>
+</html>
+
+```
